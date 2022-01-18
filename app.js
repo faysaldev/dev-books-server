@@ -18,9 +18,9 @@ const app = express();
 dbConnection();
 
 // app use
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/dev/product", productrouter);
 app.use("/dev/user", userRouter);

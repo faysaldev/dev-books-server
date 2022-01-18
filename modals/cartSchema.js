@@ -22,14 +22,6 @@ const orderShema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
-    type: {
-      required: true,
-      default: false,
-    },
   },
   { timestamps: true }
 );
