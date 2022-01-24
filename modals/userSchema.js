@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -16,12 +17,10 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      required: true,
       default: "user",
     },
     photoURL: {
       type: String,
-      required: true,
     },
     date: {
       type: Date,

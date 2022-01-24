@@ -61,12 +61,23 @@ const postData = async (req, res) => {
 
 // FIXME: Login post data
 const LoginPostData = async (req, res) => {
-  // const postInfo = {
-  //   email: req.body.email,
-  //   password: req.body.password,
-  // };
+  try {
+    const postInfo = {
+      email: req.body.email,
+      password: req.body.password,
+    };
 
-  console.log(req.body);
+    console.log(postInfo);
+    // console.log(postInfo);
+    const LoginData = await User.find({ email: postInfo.email });
+
+    if (LoginData) {
+      res.status(200).json(LoginData[0]);
+    }
+  } catch (err) {
+    console.log(err);
+    res.json({ msg: "There was an server Side Error" });
+  }
 };
 
 // delete single Data

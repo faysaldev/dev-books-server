@@ -49,6 +49,8 @@ const postData = async (req, res) => {
       userImg: req.body.userImg,
     };
 
+    console.log(postInfo);
+
     // console.log(postInfo);
     const ProductSave = await Product.create(postInfo);
     if (ProductSave) {
