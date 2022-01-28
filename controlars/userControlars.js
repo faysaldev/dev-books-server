@@ -44,6 +44,7 @@ const postData = async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       photoURL: req.body.photoURL,
+      role: req.body.role,
     };
 
     console.log(postInfo);
@@ -73,6 +74,8 @@ const LoginPostData = async (req, res) => {
 
     if (LoginData) {
       res.status(200).json(LoginData[0]);
+    } else {
+      res.status(200);
     }
   } catch (err) {
     console.log(err);
@@ -98,7 +101,16 @@ const deleteData = async (req, res) => {
 // update single Data
 const updateData = async (req, res) => {
   try {
-    const updateUser = await Product.findByIdAndUpdate(req.params.id);
+    const updateUserData = {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      role: req.body.role,
+    };
+    const updateUser = await User.findByIdAndUpdate(
+      req.params.id,
+      updateUserData
+    );
     if (updateUser) {
       res.json({ msg: "Successfully Updated" });
     } else {

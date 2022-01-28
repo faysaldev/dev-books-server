@@ -82,7 +82,17 @@ const deleteData = async (req, res) => {
 // update single Data
 const updateData = async (req, res) => {
   try {
-    const updateProduct = await Product.findByIdAndUpdate(req.params.id);
+    const updateData = {
+      title: req.body.title,
+      category: req.body.category,
+      price: req.body.price,
+      details: req.body.details,
+      image: req.body.image,
+    };
+    const updateProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      updateData
+    );
     if (updateProduct) {
       res.json({ msg: "Successfully Updated" });
     } else {
