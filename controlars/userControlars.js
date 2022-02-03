@@ -83,6 +83,28 @@ const LoginPostData = async (req, res) => {
   }
 };
 
+//FIXME: get Emial data from
+const getEmailData = async (req, res) => {
+  try {
+    const postInfo = {
+      email: req.body.email,
+    };
+
+    // console.log(postInfo);
+    // console.log(postInfo);
+    const getEmailData = await User.find({ email: postInfo.email });
+
+    if (getEmailData) {
+      res.status(200).json(getEmailData[0]);
+    } else {
+      res.status(200);
+    }
+  } catch (err) {
+    console.log(err);
+    res.json({ msg: "There was an server Side Error" });
+  }
+};
+
 // delete single Data
 const deleteData = async (req, res) => {
   try {
@@ -129,4 +151,5 @@ module.exports = {
   deleteData,
   updateData,
   LoginPostData,
+  getEmailData,
 };

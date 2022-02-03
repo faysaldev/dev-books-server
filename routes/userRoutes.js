@@ -6,6 +6,7 @@ const {
   deleteData,
   updateData,
   LoginPostData,
+  getEmailData,
 } = require("../controlars/userControlars");
 
 const router = express.Router();
@@ -20,6 +21,8 @@ router.get("/all", allData);
 router.post("/post", postData);
 
 router.post("/login", LoginPostData);
+
+router.post("/getemail", getEmailData);
 
 router.get("/single/:id", singleData);
 

@@ -49,12 +49,13 @@ const postData = async (req, res) => {
       userImg: req.body.userImg,
     };
 
-    console.log(postInfo);
+    // console.log(postInfo);
 
     // console.log(postInfo);
     const ProductSave = await Product.create(postInfo);
     if (ProductSave) {
-      return res.json({ msg: "Product Post Successfully!" });
+      console.log(ProductSave);
+      return res.json({ msg: "Product Post Successfully!", data: ProductSave });
     } else {
       return res.json({ msg: "Product Post Fild" });
     }
