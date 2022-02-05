@@ -94,8 +94,10 @@ const updateData = async (req, res) => {
       req.params.id,
       updateData
     );
+
+    // console.log(updateProduct);
     if (updateProduct) {
-      res.json({ msg: "Successfully Updated" });
+      res.json({ msg: "Successfully Updated", data: updateProduct });
     } else {
       res.json({ msg: "Updated failed" });
     }
